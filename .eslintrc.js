@@ -23,7 +23,7 @@ module.exports = {
     'indent': ['error', 2],
     'linebreak-style': [
       'error',
-      'windows'
+      'unix'
     ],
     'quotes': [
       'error',
