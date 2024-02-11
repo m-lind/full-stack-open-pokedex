@@ -8,6 +8,16 @@ primary_region = 'arn'
 
 [build]
 
+[[http_service.checks]]
+  grace_period = "4s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/health"
+
+[deploy]
+  strategy = "canary"
+
 [env]
   PORT = "3000"
 
