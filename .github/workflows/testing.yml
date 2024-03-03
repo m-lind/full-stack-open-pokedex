@@ -18,7 +18,11 @@ jobs:
         env:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$COMMITS"
-      - name: commit messages
+      - name: commit username
         env:
-          COMMIT_MESSAGES_INCLUDES_SKIP: ${{ contains(github.event.commits.*.message, '#skip') == false }}
-        run: echo "$COMMIT_MESSAGES_INCLUDES_SKIP"
+          COMMITTER_USERNAME: ${{ toJson(github.event.commits.committer.username) }}
+        run: echo "$COMMITTER_USERNAME"
+      - name: commit url
+        env: 
+            COMMITS_URL: ${{ toJson(github.event.commits.url) }}
+        run: echo "$COMMITS_URL"
