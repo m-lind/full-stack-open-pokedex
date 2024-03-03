@@ -20,7 +20,7 @@ jobs:
         run: echo "$COMMITS"
       - name: commit username
         env:
-          COMMITTER_USERNAME: ${{ toJson(github.event.commits.*.author.username) }}
+          COMMITTER_USERNAME: ${{ toJson(github.actor) }}
         run: echo "$COMMITTER_USERNAME"
       - name: commit url
         env: 
