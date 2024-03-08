@@ -37,8 +37,9 @@ jobs:
         if: ${{ github.event_name == 'push' }}
       - name: Force build failure
         run: exit 1
-      - name: Was successful
-        run: echo "Done!"
+      - name: Was failed
+        run: echo "Failed!"
+        if: failure()
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
