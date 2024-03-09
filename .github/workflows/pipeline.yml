@@ -53,5 +53,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
       - name: Notify success
-        run: echo "Done!"
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        with:
+          severity: info
+          description: A new version deployed
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
               
