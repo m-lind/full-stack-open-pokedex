@@ -35,9 +35,7 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' }}
-      - name: Force build failure
-        run: exit 1
-      - name: Was failed
+      - name: Notify failure
         run: echo "Failed!"
         if: failure()
   tag_release:
@@ -54,6 +52,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-      - name: Didn't go here
-        run: echo "Not done!"
+      - name: Notify success
+        run: echo "Done!"
               
