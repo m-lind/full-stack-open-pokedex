@@ -56,6 +56,6 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1.0.4
         with:
           severity: info
-          description: A new version deployed
+          description: "to https://full-stack-open-pokedex-m-lind.fly.dev/ by ${{ github.event.head_commit.committer.username }}"
+          text: A new version deployed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-              
