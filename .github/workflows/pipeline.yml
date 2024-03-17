@@ -36,7 +36,7 @@ jobs:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' }}
       - name: Notify success
-        run: echo "${{ github.sha }} by ${{ github.actor }} commit ${{ toJson(github.context.payload.head_commit.url) }}"
+        run: echo "${{ github.sha }} by ${{ github.actor }} commit ${{ toJson(github.event.commits.*.webhookUrl) }}"
         if: success()
       - name: Notify failure
         run: echo "Failed!"
