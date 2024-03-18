@@ -35,6 +35,10 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' }}
+      - name: Force build failure
+        run: exit 1
+      - name: Testing failure
+        run: echo "${{ github.event.commits.*.url }}"
       - name: Notify failure
         uses: rjstone/discord-webhook-notify@v1.0.4
         with:
