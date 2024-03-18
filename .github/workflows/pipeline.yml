@@ -39,6 +39,7 @@ jobs:
         run: exit 1
       - name: Testing failure
         run: echo "${{ github.event.commits.*.url }}"
+        if: failure()
       - name: Notify failure
         uses: rjstone/discord-webhook-notify@v1.0.4
         with:
