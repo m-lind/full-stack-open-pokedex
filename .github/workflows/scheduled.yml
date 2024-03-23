@@ -3,6 +3,8 @@ name: Scheduled health check
 on:
   schedule:
     - cron: '25 12 * * *'
+  pull_request:
+    branches: [main]
 
 jobs:
   test_schedule:
