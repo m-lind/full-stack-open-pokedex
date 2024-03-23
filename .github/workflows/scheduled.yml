@@ -2,9 +2,7 @@ name: Scheduled health check
 
 on:
   schedule:
-    - cron: '25 12 * * *'
-  pull_request:
-    branches: [main]
+    - cron: '10 14 * * *'
 
 jobs:
   test_schedule:
