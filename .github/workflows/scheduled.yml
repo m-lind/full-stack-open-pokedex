@@ -1,0 +1,32 @@
+name: Scheduled health check
+
+on:
+  schedule:
+    - cron: '25 12 * * *'
+
+jobs:
+  test_schedule:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v4
+        with:
+          # Check the following URLs one by one sequentially
+          url: https://full-stack-open-pokedex-m-lind.fly.dev/
+      - name: Notify failure
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        with:
+          severity: error
+          description: "Healthcheck failed"
+          text: Healthcheck failed
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+        if: failure()
+      - name: Notify success
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        with:
+          severity: info
+          description: "Healthcheck successful"
+          text: Looking good!! :)
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+        if: success()
+
